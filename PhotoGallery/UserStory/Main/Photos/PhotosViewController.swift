@@ -33,7 +33,7 @@ class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewDidLoad()
+        viewModel.loadNextPage()
     }
 }
 
@@ -50,6 +50,10 @@ extension PhotosViewController: PhotosViewModelDelegate {
 
 // MARK: - View Delegate
 extension PhotosViewController: PhotosViewDelegate {
+    func loadNextPage() {
+        viewModel.loadNextPage()
+    }
+    
     func didChangeLayout(layoutType: LayoutType) {
         viewModel.changeLayout(layoutType)
     }

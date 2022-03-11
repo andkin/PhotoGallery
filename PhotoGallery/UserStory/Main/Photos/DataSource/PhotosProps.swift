@@ -8,6 +8,7 @@
 import UIKit
 
 struct PhotosProps: Equatable {
+    var isLoadingNextPage: Bool = false
     var layoutType: LayoutType = .list
     var photos: [Photo] = []
 }

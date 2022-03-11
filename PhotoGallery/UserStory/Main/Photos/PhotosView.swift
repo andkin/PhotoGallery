@@ -10,6 +10,7 @@ import SnapKit
 
 protocol PhotosViewDelegate: AnyObject {
     func didChangeLayout(layoutType: LayoutType)
+    func loadNextPage()
 }
 
 class PhotosView: UIView {
@@ -48,6 +49,7 @@ private extension PhotosView {
         
         backgroundColor = .white
         collectionView.alwaysBounceVertical = true
+        collectionView.delegate = self
         collectionView.register(cell: PhotosSpinnerCell.self)
         collectionView.register(cell: PhotosItemCell.self)
         
@@ -73,12 +75,13 @@ private extension PhotosView {
     func configureDataSource() {
         dataSource = PhotosDataSource(collectionView: collectionView) { (collectionView, indexPath, item) in
             switch item {
-            case .spinner:
+            case .spinner(let isActive):
                 guard let cell: PhotosSpinnerCell = collectionView.dequeueReusableCell(for: indexPath) else { break }
+                cell.update(isActive: isActive)
                 return cell
-            case .photo(let item):
+            case .photo(let item, let layoutType):
                 guard let cell: PhotosItemCell = collectionView.dequeueReusableCell(for: indexPath) else { break }
-                cell.update(item: item)
+                cell.update(item: item, layoutType: layoutType)
                 return cell
             }
             return UICollectionViewCell()
@@ -108,8 +111,8 @@ extension PhotosView {
     }
     
     enum Item: Hashable {
-        case spinner
-        case photo(item: Photo)
+        case spinner(isActive: Bool)
+        case photo(item: Photo, layoutType: LayoutType)
     }
 }
 
@@ -162,6 +165,21 @@ private extension PhotosView {
             section.interGroupSpacing = 12
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
             return section
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PhotosView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
+        switch item {
+        case .spinner:
+            delegate?.loadNextPage()
+        default:
+            break
         }
     }
 }

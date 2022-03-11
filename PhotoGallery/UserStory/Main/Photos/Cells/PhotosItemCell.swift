@@ -23,8 +23,8 @@ class PhotosItemCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(item: Photo) {
-        photoImageView.setImage(with: item.urls.regular, placeholder: nil)
+    func update(item: Photo, layoutType: LayoutType) {
+        photoImageView.setImage(with: item.urls.small, placeholder: nil)
         userNameLabel.text = item.user.name
         descriptionLabel.text = item.description ?? "No description"
     }

@@ -31,9 +31,12 @@ class PhotosDataSource: UICollectionViewDiffableDataSource<PhotosView.Section, P
         snapshot.appendSections([.main(layoutType: props.layoutType)])
         
         props.photos.forEach {
-            snapshot.appendItems([.photo(item: $0)], toSection: .main(layoutType: props.layoutType))
+            snapshot.appendItems([.photo(item: $0, layoutType: props.layoutType)],
+                                 toSection: .main(layoutType: props.layoutType))
         }
         
+        snapshot.appendItems([.spinner(isActive: props.isLoadingNextPage)],
+                             toSection: .main(layoutType: props.layoutType))
         
         DispatchQueue.main.async {
             self.apply(snapshot, animatingDifferences: animatingDifferences)

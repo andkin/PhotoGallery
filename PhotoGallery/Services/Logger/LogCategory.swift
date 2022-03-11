@@ -16,6 +16,7 @@ enum LogCategory: String {
     //Networking
     case networking = "Networking"
     case decoding = "Network Decoding"
+    case pagination = "Pagination"
     
     //Custom
     case photos = "Photos"

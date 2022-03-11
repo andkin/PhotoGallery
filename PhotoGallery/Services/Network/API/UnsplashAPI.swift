@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum UnsplashAPI {
-    case getPhotoList
+    case getPhotoList(page: Int)
 }
 
 extension UnsplashAPI: TargetType {
@@ -52,8 +52,8 @@ extension UnsplashAPI: TargetType {
     
     private var requestParameters: [String: Any] {
         switch self {
-        case .getPhotoList:
-            return [:]
+        case .getPhotoList(let page):
+            return ["page": page]
         }
     }
 }

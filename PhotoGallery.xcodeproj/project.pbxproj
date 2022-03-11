@@ -49,6 +49,8 @@
 		6D737CB427DB86B800AF029C /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D737CB327DB86B800AF029C /* UIImageView+Ext.swift */; };
 		6D737CB827DB8D4F00AF029C /* LayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D737CB727DB8D4F00AF029C /* LayoutType.swift */; };
 		6D737CBA27DBE7EC00AF029C /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D737CB927DBE7EC00AF029C /* Publisher+Ext.swift */; };
+		6D737CBD27DBF1E600AF029C /* PaginationMetadataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D737CBC27DBF1E600AF029C /* PaginationMetadataHandler.swift */; };
+		6D737CC027DBF27000AF029C /* PaginationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D737CBF27DBF27000AF029C /* PaginationResponseModel.swift */; };
 		761B22739A4025726EF24337 /* Pods_PhotoGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8970745191A90642CBF680C5 /* Pods_PhotoGallery.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		6D737CB327DB86B800AF029C /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		6D737CB727DB8D4F00AF029C /* LayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutType.swift; sourceTree = "<group>"; };
 		6D737CB927DBE7EC00AF029C /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
+		6D737CBC27DBF1E600AF029C /* PaginationMetadataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationMetadataHandler.swift; sourceTree = "<group>"; };
+		6D737CBF27DBF27000AF029C /* PaginationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationResponseModel.swift; sourceTree = "<group>"; };
 		8970745191A90642CBF680C5 /* Pods_PhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2346986E2AD94D527DEE3E /* Pods-PhotoGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.debug.xcconfig"; path = "Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.debug.xcconfig"; sourceTree = "<group>"; };
 		F2510A874BC9110C47D98C32 /* Pods-PhotoGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.release.xcconfig"; path = "Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.release.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		6D1B34C027DB596300F2D1BD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6D737CBB27DBF1D500AF029C /* Pagination */,
 				6D737C8E27DB80C200AF029C /* API */,
 				6D1B34C127DB596300F2D1BD /* NetworkAPILogger.swift */,
 				6D1B34C227DB596300F2D1BD /* NetworkAPIService.swift */,
@@ -311,6 +316,7 @@
 		6D1B34E027DB596300F2D1BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6D737CBE27DBF26300AF029C /* Pagination */,
 				6D737CAA27DB839000AF029C /* User */,
 				6D737CA727DB834400AF029C /* Photo */,
 				6D1B34E127DB596300F2D1BD /* Errors */,
@@ -405,6 +411,22 @@
 				6D737CB727DB8D4F00AF029C /* LayoutType.swift */,
 			);
 			path = LayoutType;
+			sourceTree = "<group>";
+		};
+		6D737CBB27DBF1D500AF029C /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				6D737CBC27DBF1E600AF029C /* PaginationMetadataHandler.swift */,
+			);
+			path = Pagination;
+			sourceTree = "<group>";
+		};
+		6D737CBE27DBF26300AF029C /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				6D737CBF27DBF27000AF029C /* PaginationResponseModel.swift */,
+			);
+			path = Pagination;
 			sourceTree = "<group>";
 		};
 		8AC965526D3B0F2F043B9EFD /* Frameworks */ = {
@@ -531,6 +553,7 @@
 			files = (
 				6D1B34E527DB596300F2D1BD /* MoyaProvider+Combine.swift in Sources */,
 				6D737CA527DB820F00AF029C /* PhotosViewController.swift in Sources */,
+				6D737CBD27DBF1E600AF029C /* PaginationMetadataHandler.swift in Sources */,
 				6D1B350027DB596300F2D1BD /* AppRouter.swift in Sources */,
 				6D1B351027DB596300F2D1BD /* AppDelegate.swift in Sources */,
 				6D1B34F727DB596300F2D1BD /* CocoaLumberjackLogger.swift in Sources */,
@@ -542,6 +565,7 @@
 				6D1B34ED27DB596300F2D1BD /* ModuleRouterProtocol.swift in Sources */,
 				6D737CA027DB820F00AF029C /* PhotosDataSource.swift in Sources */,
 				6D1B34E827DB596300F2D1BD /* AnyPublisher+Ext.swift in Sources */,
+				6D737CC027DBF27000AF029C /* PaginationResponseModel.swift in Sources */,
 				6D1B34F827DB596300F2D1BD /* Logger.swift in Sources */,
 				6D737CA927DB834D00AF029C /* Photo.swift in Sources */,
 				6D737CA227DB820F00AF029C /* PhotosViewModel.swift in Sources */,

@@ -21,12 +21,8 @@ class PhotosSpinnerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(active: Bool) {
-        if active {
-            spinner.startAnimating()
-        } else {
-            spinner.stopAnimating()
-        }
+    func update(isActive: Bool) {
+        isActive ? spinner.startAnimating() : spinner.stopAnimating()
     }
 }
 
