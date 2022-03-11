@@ -19,7 +19,7 @@ final class SceneDelegateRouterPlugin: UIResponder, SceneDelegateService {
         router = AppRouter()
         
         router?.window = window
-        router?.present(flow: .splash, animated: true)
+        router?.present(flow: .main, animated: true)
         
         Logger.verbose(.plugin, "Application Router is ready. Presenting launch screen...")
     }

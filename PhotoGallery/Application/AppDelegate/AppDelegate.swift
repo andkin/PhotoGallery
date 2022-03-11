@@ -14,7 +14,6 @@ protocol AppDelegateService: UIApplicationDelegate, UNUserNotificationCenterDele
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     // MARK: - UIApplicationDelegate Services
-    
     private lazy var services: [AppDelegateService] = {
         return [
             AppDelegateLaunchTime(.start),
@@ -24,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }()
     
     // MARK: - UIApplicationDelegate Lifecycle
-    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         var result = false
@@ -37,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     // MARK: - UISceneSession Lifecycle
-
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -50,21 +47,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         return configuration
-    }
-    
-    // MARK: - Remote Notifications Lifecycle
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        for service in services {
-            service.application?(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
-        }
-    }
-    
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        for service in services {
-            service.application?(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
-        }
     }
 }

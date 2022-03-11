@@ -23,10 +23,21 @@ final class MainFlowRouter: FlowRouterProtocol {
     }
     
     func startFlow(animated: Bool) {
-
+        showPhotosViewController(animated: true)
     }
     
     func finishFlow(animated: Bool) {
         
+    }
+}
+
+// MARK: - PhotosVCPresentingProtocol
+extension MainFlowRouter: PhotosVCPresentingProtocol {
+    func showPhotosViewController(animated: Bool) {
+        let viewController = PhotosBuilder(flowRouter: self)
+            .build()
+        navigationController.isNavigationBarHidden = true
+        navigationController.pushViewController(viewController,
+                                                animated: animated)
     }
 }

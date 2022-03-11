@@ -18,6 +18,7 @@ enum LogCategory: String {
     case decoding = "Network Decoding"
     
     //Custom
+    case photos = "Photos"
     
     case unknown = "Unknown"
 }

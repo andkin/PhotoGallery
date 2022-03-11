@@ -22,6 +22,10 @@ class OnlineProvider<Target> where Target: Moya.TargetType {
         
         let session = Session(configuration: URLSessionConfiguration.default)
         
+        let accessToken = AccessTokenPlugin { _ in
+            return "aTu-N-MIHkk2ojXjGomFBfghZdE9znDQnIa3y7KbCs0"
+        }
+        
         let logging = NetworkAPILogger(verbose: true,
                                        cURL: false,
                                        requestDataFormatter: NetworkAPILogger.JSONRequestDataFormatter,
@@ -29,7 +33,7 @@ class OnlineProvider<Target> where Target: Moya.TargetType {
         
         provider = MoyaProvider(stubClosure: stubClosure,
                                 session: session,
-                                plugins: [logging])
+                                plugins: [logging, accessToken])
     }
     
     func request(_ target: Target) -> AnyPublisher<Response, PhotoGalleryApiError> {

@@ -41,11 +41,6 @@ final class AppRouter: AppRouterProtocol {
 extension AppRouter {
     func present(flow: AppFlow, animated: Bool) {
         switch flow {
-        case .splash:
-            let router = SplashFlowRouter(appRouter: self)
-            self.currentRouter = router
-            switchWindow(animated: animated)
-            router.startFlow(animated: animated)
         case .main:
             let router = MainFlowRouter(appRouter: self)
             self.currentRouter = router

@@ -23,6 +23,5 @@ protocol AppRouterProtocol: AnyObject {
 }
 
 enum AppFlow {
-    case splash
     case main
 }
